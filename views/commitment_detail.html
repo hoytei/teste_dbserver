@@ -1,0 +1,102 @@
+
+<div id="pageDiv" class="page" ng-controller="commitmentDetailCtrl">
+  <form>
+   <div id="detailBox">
+    <div ng-if="show_alert;" class="alert alert-danger">
+      <strong>Atenção!</strong> O campo {{danger_field}} é obrigatório.
+    </div>
+        <div class="row">
+          <div  class="col-sm-12">
+              <label>Título(*):</label>
+                <div class="input-group form-validation" style="width: 100%">
+                    <input 
+                           type="text" 
+                           class="form-control" 
+                           placeholder="" 
+                           required="true"
+                           data-ng-model="title" 
+                    >
+                </div>
+          </div>
+        </div>
+        <div class="row">
+          <div  class="col-sm-3">
+              <label>Data Início(*):</label>
+                <div class="input-group form-validation" style="width: 100%">
+                    <input 
+                           type="text" 
+                           class="form-control" 
+                           placeholder="" 
+                           required="true"
+                           data-ng-model="begin_date" 
+                    >
+                </div>
+          </div>
+          <div  class="col-sm-3">
+              <label>Horário Início(*):</label>
+                <div class="input-group form-validation" style="width: 100%">
+                    <input 
+                           type="text" 
+                           class="form-control" 
+                           placeholder="" 
+                           required="true"
+                           data-ng-model="begin_time" 
+                    >
+                </div>
+          </div>
+          <div  class="col-sm-3">
+              <label>Data Final(*):</label>
+                <div class="input-group form-validation" style="width: 100%">
+                    <input
+                           type="text" 
+                           class="form-control" 
+                           placeholder="" 
+                           required="true"
+                           data-ng-model="end_date" 
+                    >
+                </div>
+          </div>
+          <div  class="col-sm-3">
+              <label>Horário Final:</label>
+                <div class="input-group form-validation" style="width: 100%">
+                    <input 
+                           type="text" 
+                           class="form-control" 
+                           placeholder="" 
+                           required="true"
+                           data-ng-model="end_time" 
+                    >
+                </div>
+          </div>
+        </div>
+        <div class="row">
+          <div  class="col-sm-12">
+              <label>Detalhes:</label>
+                <div class="input-group form-validation" style="width: 100%">
+                    <textarea
+                           rows="4" cols="50"
+                           type="text" 
+                           class="form-control" 
+                           placeholder="" 
+                           data-ng-model="detail" 
+                    ></textarea>
+                </div>
+          </div>
+        </div>
+      </div>
+
+    <div>
+        <button class="btn btn-success" ng-disabled="is_money" name="save" ng-click="verify()">
+            <span class="fa fa-save"></span> Salvar
+        </button>
+       
+        <button class="btn btn-danger"  ng-click="goToHome()">
+            <span class="ti-back-left"></span> Voltar
+        </button>
+    </div>
+    </form>   
+</div>
+
+
+
+    

@@ -1,0 +1,35 @@
+<!doctype html>
+
+<html lang="en" data-ng-app="app"  ng-controller="homeCtrl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teste DbServer</title>   
+   
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">   
+    
+  </head>
+  <body>
+    <div> 
+      <h2>Bem vindo à sua agenda!</h2>
+      <p> Você tem {{count_commitment}} compromissos.</p>
+      
+     
+      <main ng-view></main>
+
+    </div>   
+  
+    <script type="application/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/jquery.min.js"></script>
+    <script src="controllers/app.module.js"></script>
+    <script src="controllers/app.routes.js"></script>
+    <script src="controllers/home.controller.js"></script>
+    <script src="controllers/commitment.detail.controller.js"></script>
+    <script src="controllers/mock.service.js"></script>
+
+  </body>
+</html>

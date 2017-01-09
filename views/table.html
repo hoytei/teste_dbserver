@@ -1,0 +1,20 @@
+<a type="button" ng-href="#/commitment_detail" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Adicionar Compromisso</a>
+
+<table ng-if="count_commitment > 0" class="table table-bordered table-striped table-responsive table-hover">          
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" ng-model="select_all" ng-click="selectAll()"><span></span></th>
+                        <th>Título</th>
+                        <th>Data/Horário Início</th>
+                        <th>Data/Horário Término</th>                       
+                    </tr>
+                </thead>
+          <tbody>
+              <tr ng-repeat="list in commitmentList" ng-click="goToDetail(list.id)">
+                  <td><input type="checkbox" ng-model="list" ng-click="setSelected(list)"><span></span></td>
+                  <td>{{list.title}}</td>
+                  <td>{{list.begin_date}}</td>
+                  <td>{{list.end_date}}</td>                 
+              </tr>
+          </tbody>
+      </table>
