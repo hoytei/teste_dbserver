@@ -12,8 +12,17 @@
             $scope.id = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
             if($scope.id != 'commitment_detail'){
                 $scope.service.getById($scope.id, function (result){ 
-                    $scope.commitment = result;
-                   alert(JSON.stringify($scope.commitment))
+                    $scope.commitment = result;  
+                    for(var i = 0; i < $scope.commitment.length; i++){
+                        if($scope.commitment[i].id == $scope.id){
+                            $scope.title = $scope.commitment[i].title;
+                            $scope.detail = $scope.commitment[i].detail;
+                            $scope.begin_date = JSON.stringify($scope.formatDateTime($scope.commitment[i].begin_date)).split(" ")[0].replace(/"/, ""); 
+                            $scope.begin_time = JSON.stringify($scope.formatDateTime($scope.commitment[i].begin_date)).split(" ")[1].replace(/"/, "");
+                            $scope.end_date = JSON.stringify($scope.formatDateTime($scope.commitment[i].end_date)).split(" ")[0].replace(/"/, "");
+                            $scope.end_time = JSON.stringify($scope.formatDateTime($scope.commitment[i].end_date)).split(" ")[0].replace(/"/, "");
+                        }
+                    }                 
                 });
             }            
         }
@@ -61,6 +70,9 @@
                             end_date : $scope.setDateTime($scope.end_date, $scope.end_time),
                             detail : $scope.detail
                           }
+           if($scope.id != 'commitment_detail'){
+                $scope.list.id = $scope.id;
+           }
 
             $scope.service.save($scope.list, function (result){                    
                    alert(JSON.stringify(result.msg));

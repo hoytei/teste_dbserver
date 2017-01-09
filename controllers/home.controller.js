@@ -7,9 +7,15 @@
     function homeCtrl($scope, $http, $filter, $rootScope, MockService) {
 
         $scope.service = new MockService($scope);
+        $scope.commitmentList = [];
 
-        $scope.service.getAll(function (result){ console.log(JSON.stringify(result));
-            $scope.commitmentList = result;
+        $scope.service.getAll(function (result){ 
+            for(var i = 0; i < result.length; i++){ 
+                if(result[i].status == "active"){
+                    $scope.commitmentList.push(result[i]);                    
+                }
+            }
+            
             $scope.list_length = $scope.commitmentList.length;
             for(var i = 0; i < $scope.list_length; i++){
               $scope.commitmentList[i].begin_date = $scope.formatDateTime($scope.commitmentList[i].begin_date);

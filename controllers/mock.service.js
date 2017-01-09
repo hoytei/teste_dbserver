@@ -27,9 +27,7 @@
                 var contentType = {'Content-Type': 'application/json'};
                 $http.post(url, json,{cache: false}).then(function(response) {
                     callback(response);
-                });
-
-               // $http.post(contentType, this.scope, this.http, url, json, callBack);  
+                });               
             };
 
             MockService.prototype.deleteItens = function (pmItem, callBack){               
