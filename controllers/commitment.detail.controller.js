@@ -15,8 +15,7 @@
                     $scope.commitment = result;
                    alert(JSON.stringify($scope.commitment))
                 });
-            }
-            
+            }            
         }
 
         $scope.formatDateTime = function(dt){ 
@@ -55,7 +54,23 @@
         }
 
         $scope.save = function(){
-            
+            $scope.setDateTime();
+
+            $scope.list = {
+                            title : $scope.title,
+                            begin_date : $scope.begin_date,
+                            end_date : $scope.begin_time, 
+                            detail : $scope.detail
+                          }
+        }
+
+        $scope.setDateTime = function(){
+           alert($scope.begin_date) 
+            alert($scope.begin_time)
+
+            alert($scope.end_date)
+            alert($scope.end_time)
+
         }
 
         

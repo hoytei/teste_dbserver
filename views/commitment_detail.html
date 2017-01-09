@@ -2,7 +2,7 @@
 <div id="pageDiv" class="page" ng-controller="commitmentDetailCtrl">
   <form>
    <div id="detailBox">
-    <div ng-if="show_alert;" class="alert alert-danger">
+    <div ng-if="show_alert" class="alert alert-danger">
       <strong>Atenção!</strong> O campo {{danger_field}} é obrigatório.
     </div>
         <div class="row">
@@ -25,7 +25,8 @@
                 <div class="input-group form-validation" style="width: 100%">
                     <input 
                            type="text" 
-                           class="form-control" 
+                           mask='99/99/9999'
+                           class="date form-control" 
                            placeholder="" 
                            required="true"
                            data-ng-model="begin_date" 
@@ -36,9 +37,9 @@
               <label>Horário Início(*):</label>
                 <div class="input-group form-validation" style="width: 100%">
                     <input 
-                           type="text" 
-                           class="form-control" 
-                           placeholder="" 
+                           type="time" 
+                           class="time form-control" 
+                           placeholder=""                           
                            required="true"
                            data-ng-model="begin_time" 
                     >
@@ -49,7 +50,8 @@
                 <div class="input-group form-validation" style="width: 100%">
                     <input
                            type="text" 
-                           class="form-control" 
+                           mask='99/99/9999'
+                           class="date form-control" 
                            placeholder="" 
                            required="true"
                            data-ng-model="end_date" 
@@ -60,8 +62,8 @@
               <label>Horário Final:</label>
                 <div class="input-group form-validation" style="width: 100%">
                     <input 
-                           type="text" 
-                           class="form-control" 
+                           type="time"
+                           class="time form-control" 
                            placeholder="" 
                            required="true"
                            data-ng-model="end_time" 
@@ -96,7 +98,6 @@
     </div>
     </form>   
 </div>
-
 
 
     
