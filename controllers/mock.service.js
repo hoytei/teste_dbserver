@@ -22,11 +22,14 @@
                 });
             };
 
-            MockService.prototype.save = function (pm, callBack) {
-               var url = "http://demo0741009.mockable.io/get_list";            
-                $http.get(url,{cache: false}).success(function(response) {
+            MockService.prototype.save = function (json, callback) {
+                var url = "http://demo0741009.mockable.io/save";            
+                var contentType = {'Content-Type': 'application/json'};
+                $http.post(url, json,{cache: false}).then(function(response) {
                     callback(response);
                 });
+
+               // $http.post(contentType, this.scope, this.http, url, json, callBack);  
             };
 
             MockService.prototype.deleteItens = function (pmItem, callBack){               

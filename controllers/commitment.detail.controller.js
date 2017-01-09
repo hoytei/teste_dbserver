@@ -54,23 +54,28 @@
         }
 
         $scope.save = function(){
-            $scope.setDateTime();
-
+           
             $scope.list = {
                             title : $scope.title,
-                            begin_date : $scope.begin_date,
-                            end_date : $scope.begin_time, 
+                            begin_date : $scope.setDateTime($scope.begin_date, $scope.begin_time),
+                            end_date : $scope.setDateTime($scope.end_date, $scope.end_time),
                             detail : $scope.detail
                           }
+
+            $scope.service.save($scope.list, function (result){                    
+                   alert(JSON.stringify(result.msg));
+                   window.location ="/";
+            });
+                         
         }
 
-        $scope.setDateTime = function(){
-           alert($scope.begin_date) 
-            alert($scope.begin_time)
-
-            alert($scope.end_date)
-            alert($scope.end_time)
-
+        $scope.setDateTime = function(date, time){        
+           var hour = time.getHours();
+           var min = time.getMinutes();
+           if(hour == '0'){
+            hour = '00';
+           }
+           return date + " "+ hour+ ":" + min;
         }
 
         
