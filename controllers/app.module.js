@@ -3,7 +3,9 @@
 
     angular.module('app', [
 							'ngRoute',
-							'ngMask'
+							'ngMask',
+							'ui.bootstrap'
+
 						  ]);
 
 })();

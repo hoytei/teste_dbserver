@@ -17,14 +17,25 @@
                         if($scope.commitment[i].id == $scope.id){
                             $scope.title = $scope.commitment[i].title;
                             $scope.detail = $scope.commitment[i].detail;
-                            $scope.begin_date = JSON.stringify($scope.formatDateTime($scope.commitment[i].begin_date)).split(" ")[0].replace(/"/, ""); 
-                            $scope.begin_time = JSON.stringify($scope.formatDateTime($scope.commitment[i].begin_date)).split(" ")[1].replace(/"/, "");
-                            $scope.end_date = JSON.stringify($scope.formatDateTime($scope.commitment[i].end_date)).split(" ")[0].replace(/"/, "");
-                            $scope.end_time = JSON.stringify($scope.formatDateTime($scope.commitment[i].end_date)).split(" ")[0].replace(/"/, "");
+                            $scope.begin_date = 
+                                    JSON.stringify($scope.formatDateTime($scope.commitment[i].begin_date)).split(" ")[0].replace(/"/, ""); 
+                            $scope.begin_time = 
+                                    $scope.formatTime(JSON.stringify($scope.formatDateTime($scope.commitment[i].begin_date)).split(" ")[1].replace(/"/, ""));
+                            $scope.end_date = 
+                                    JSON.stringify($scope.formatDateTime($scope.commitment[i].end_date)).split(" ")[0].replace(/"/, "");
+                            $scope.end_time = 
+                                    parseInt(JSON.stringify($scope.formatDateTime($scope.commitment[i].end_date)).split(" ")[0].replace(/"/, ""));
                         }
                     }                 
                 });
             }            
+        }
+
+        $scope.formatTime = function(time){
+            var dat = new Date, time = time.split(/\:|\-/g);
+            dat.setHours(time[0]);
+            dat.setMinutes(time[1]); alert(dat)
+            return dat
         }
 
         $scope.formatDateTime = function(dt){ 
@@ -75,8 +86,8 @@
            }
 
             $scope.service.save($scope.list, function (result){                    
-                   alert(JSON.stringify(result.msg));
-                   window.location ="/";
+                    if(result.data.msg == "success")
+                        window.location ="/";
             });
                          
         }

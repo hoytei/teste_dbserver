@@ -2,7 +2,7 @@
 <div id="pageDiv" class="page" ng-controller="commitmentDetailCtrl">
   <form>
    <div id="detailBox">
-    <div ng-if="show_alert" class="alert alert-danger">
+    <div ng-if="show_alert" class="alert alert-danger fade in">
       <strong>Atenção!</strong> O campo {{danger_field}} é obrigatório.
     </div>
         <div class="row">
@@ -62,7 +62,8 @@
               <label>Horário Final:</label>
                 <div class="input-group form-validation" style="width: 100%">
                     <input 
-                           type="time"
+                           type="text"
+                           pattern = "^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"
                            class="time form-control" 
                            placeholder="" 
                            required="true"
