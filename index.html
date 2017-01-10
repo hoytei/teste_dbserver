@@ -13,14 +13,14 @@
     
   </head>
   <body>
-    <div> 
-      <h2>Bem vindo à sua agenda!</h2>
-      <p> Você tem {{count_commitment}} compromissos.</p>
-      
-     
-      <main ng-view></main>
-
-    </div>   
+    <div id="header"> 
+      <h1>{{page_title}}</h2>
+    </div>
+    <div id="header_line"></div>
+    <div class="pull-right text-info" id="subtext">
+      <p> Você tem <b>{{count_commitment}}</b> compromissos.</p>   
+    </div>
+      <main ng-view></main>  
   
     <script type="application/javascript" src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>

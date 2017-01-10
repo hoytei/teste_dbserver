@@ -20,11 +20,11 @@
                             $scope.begin_date = 
                                     JSON.stringify($scope.formatDateTime($scope.commitment[i].begin_date)).split(" ")[0].replace(/"/, ""); 
                             $scope.begin_time = 
-                                    $scope.formatTime(JSON.stringify($scope.formatDateTime($scope.commitment[i].begin_date)).split(" ")[1].replace(/"/, ""));
+                                    JSON.stringify($scope.formatDateTime($scope.commitment[i].begin_date)).split(" ")[1].replace(/"/, "");
                             $scope.end_date = 
                                     JSON.stringify($scope.formatDateTime($scope.commitment[i].end_date)).split(" ")[0].replace(/"/, "");
                             $scope.end_time = 
-                                    parseInt(JSON.stringify($scope.formatDateTime($scope.commitment[i].end_date)).split(" ")[0].replace(/"/, ""));
+                                    JSON.stringify($scope.formatDateTime($scope.commitment[i].end_date)).split(" ")[1].replace(/"/, "");
                         }
                     }                 
                 });
@@ -45,25 +45,35 @@
 
         $scope.verify = function(){
             $scope.canSave = true;
-
+            $scope.title_error = false;
+            $scope.begin_date_error = false;
+            $scope.begin_time_error = false;
+            $scope.end_date_error = false;
+            $scope.end_time_error = false;
+            
             if(!$scope.isSet($scope.title)){
                 $scope.danger_field = "título"
+                $scope.title_error = true;
                 $scope.show_alert = true;
                 $scope.canSave = false;
             }else if(!$scope.isSet($scope.begin_date)){
-                $scope.danger_field = "data início"
+                $scope.danger_field = "data de início"
+                $scope.begin_date_error = true;
                 $scope.show_alert = true;
                 $scope.canSave = false;
             }else if(!$scope.isSet($scope.begin_time)){
-                $scope.danger_field = "horário início"
+                $scope.danger_field = "horário de início"
+                $scope.begin_time_error = true;
                 $scope.show_alert = true;
                 $scope.canSave = false;
             }else if(!$scope.isSet($scope.end_date)){
-                $scope.danger_field = "data final"
+                $scope.danger_field = "data de término"
+                $scope.end_date_error = true;
                 $scope.show_alert = true;
                 $scope.canSave = false;
             }else if(!$scope.isSet($scope.end_time)){
-                $scope.danger_field = "horário final"
+                $scope.danger_field = "horário de término"
+                $scope.end_time_error = true;
                 $scope.show_alert = true;
                 $scope.canSave = false;
             }           

@@ -1,10 +1,10 @@
 (function () {
     'use strict';
     angular.module('app')
-        .controller('homeCtrl', ['$scope', '$http', '$filter','$rootScope','MockService','$uibModal', homeCtrl])
+        .controller('homeCtrl', ['$scope', '$http', '$filter','$rootScope','MockService','$uibModal', '$location', homeCtrl])
         .controller('ModalInstanceCtrl', ['$scope', '$rootScope', ModalInstanceCtrl])
 
-    function homeCtrl($scope, $http, $filter, $rootScope, MockService, $uibModal) {
+    function homeCtrl($scope, $http, $filter, $rootScope, MockService, $uibModal, $location) {
 
         $scope.service = new MockService($scope);
         $scope.commitmentList = [];
@@ -26,6 +26,12 @@
                 $scope.count_commitment = $scope.list_length;
 
             });
+
+            if($location.path().indexOf('commitment_detail') < 0)
+              $scope.page_title = 'Bem vindo à sua agenda!';
+            else
+              $scope.page_title = 'Detalhes da agenda';
+
         }
 
         $scope.formatDateTime = function(dt){ 
@@ -37,7 +43,7 @@
 
         $scope.goToDetail = function(id){
             if(id != undefined)
-                window.location.href ="#/commitment_detail/"+id
+                window.location ="#/commitment_detail/"+id
             else
                 window.location ="#/commitment_detail"
         }
